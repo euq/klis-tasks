@@ -1,6 +1,0 @@
-<QUERY>
-<NUM>Q001</NUM>
-<TEXT>
-anchor because lodem classification of web going
-</TEXT>
-</QUERY>
