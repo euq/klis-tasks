@@ -1,4 +1,4 @@
-use lib 'math/to/cje3/script/3';
+use lib 'path/to/cje3/script/3';
 use CJE::Extract;
 use CJE::Stopword;
 use CJE::Stemming;
