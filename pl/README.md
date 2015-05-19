@@ -11,6 +11,3 @@
 |      `-- Tf.pm  
 |-- documents.txt  
 |-- main.pl
-
-## ライセンス
-* [MITライセンス](LICENSE.md)
