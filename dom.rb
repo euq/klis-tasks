@@ -24,4 +24,4 @@ doc = REXML::Document.new file
 
 root = doc.root
 
-traverse(root, 1)
+traverse(root, 1) 
