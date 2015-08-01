@@ -5,7 +5,7 @@ require "rexml/document"
 def traverse(node, order, pre)
 
   order += 1
-  puts "#{pre}|#{order}"
+  puts "#{pre}|#{order}" if pre != 0
 
   if !node.has_elements? and node.has_text?
     pre = order
