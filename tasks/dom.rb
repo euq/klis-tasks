@@ -4,11 +4,11 @@ require "rexml/document"
 
 def traverse(node, order)
 
-  printf("%d,%s\n", order, node.name)
+  puts "#{order}|#{node.name}|#{node.node_type}"
   order += 1
 
   if !node.has_elements? and node.has_text?
-    printf("%d,%s\n", order, node.texts[0])
+    puts "#{order}|#{node.texts[0]}|#{node.texts[0].node_type}"
     order += 1
   else
     node.elements.each{|child|
