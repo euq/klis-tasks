@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+# ex5
 
 require "rexml/document"
 
