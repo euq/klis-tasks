@@ -19,7 +19,7 @@ def traverse(node, order)
   return order
 end
 
-file = File.new("./sample.xml")
+file = File.new("./jbisc100.xml")
 doc = REXML::Document.new file
 
 root = doc.root
