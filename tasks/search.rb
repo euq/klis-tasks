@@ -46,7 +46,9 @@ xpath_list = [
   "/child::books/child::book/child::title",
   "/child::books/child::book",
   "/books/book",
-  "/records/bibrecord/pub"
+  #"/records/bibrecord/pub",
+  "//bibrecord",
+  "//pub"
 ]
 
 db = SQLite3::Database.new("./jbisc.db")
