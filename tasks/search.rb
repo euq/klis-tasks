@@ -14,9 +14,33 @@ def parse_xpath(xpath)
     where += "AND e#{(index+1).to_s}.start = n#{(index+1).to_s}.id AND e#{(index+1).to_s}.end = n#{(index+2).to_s}.id AND n#{(index+2).to_s}.name = '#{elem}' "
   end
   query += from + where + ';'
-  p query
+  return query
 end
 
+def printnode(id, db)
+
+  current = []
+  child = []
+
+  # id で指定されたノードの名前と型 (element/text) を取得
+  current = db.execute("select name,type from node where id = ?;", id)
+
+  if current[0][1] == "element"
+    printf("<%s>", current[0][0].to_s) # 開始タグの表示
+
+    # 子要素の取得
+    child = db.execute("select end from edge where start = ?;", id)
+
+    # 各子要素を再帰的に表示
+    child.each {|row|
+      printnode(row[0].to_i, db)
+    }
+    printf("</%s>\n", current[0][0].to_s) #終了タグの表示
+
+  else current[0][1] == "text"
+    printf("%s", current[0][0])
+  end
+end
 
 xpath_list = [
   "/child::books/child::book/child::title",
@@ -33,7 +57,8 @@ xpath_list.each do |xpath|
   # SQL 文を実行
   db.transaction{
     db.execute(query) {|row|
-    printf("%s\n", row[0])
+    # printf("%s\n", row[0])
+    printnode(row[0], db)
   }
   }
 end
