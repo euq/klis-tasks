@@ -2,10 +2,6 @@
 
 require "sqlite3"
 
-xpath = "/child::books/child::book/child::title"
-# xpath = "/child::books/child::book"
-# xpath = "/child::books"
-
 def parse_xpath(xpath)
   elems = xpath.gsub(/child\:\:/,'').split('/')
   elems.shift
@@ -21,15 +17,25 @@ def parse_xpath(xpath)
   p query
 end
 
-query = parse_xpath(xpath)
-# データベースに接続
+
+xpath_list = [
+  "/child::books/child::book/child::title",
+  "/child::books/child::book",
+  "/books/book"
+]
+
 db = SQLite3::Database.new("./jbisc.db")
 
-# SQL 文を実行
-db.transaction{
-  db.execute(query) {|row|
-  printf("%s\n", row[0])
-}
-}
+xpath_list.each do |xpath|
+  query = parse_xpath(xpath)
+  # データベースに接続
+
+  # SQL 文を実行
+  db.transaction{
+    db.execute(query) {|row|
+    printf("%s\n", row[0])
+  }
+  }
+end
 
 db.close 
