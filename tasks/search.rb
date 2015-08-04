@@ -2,39 +2,32 @@
 
 require "sqlite3"
 
-xpath = "/child::books/child::book"
+xpath = "/child::books/child::book/child::title"
+# xpath = "/child::books/child::book"
+# xpath = "/child::books"
 
-# XPath 式に出現する要素名を格納する配列
-label = []
-
-# XPath 式を / で分割
-steps = xpath.split("/")
-
-# XPath 式を先頭から見ていき，要素名を label[0], label[1], ... に格納
-steps.each_with_index do |step,i|
-  # steps[0] は空なので読み飛ばす
-  next if i == 0
-
-  tmp = step.split("::") # tmp[0] が軸，tmp[1] が要素名
-  if tmp[0] != "child"
-    STDERR.print i, "番目の軸，おかしいんとちゃいます？\n"
-    exit(1)
+def parse_xpath(xpath)
+  elems = xpath.gsub(/child\:\:/,'').split('/')
+  elems.shift
+  query = "SELECT n#{(elems.size).to_s}.id "
+  from  = "FROM node n1 "
+  where = "WHERE n1.id = 1 AND n1.name = 'books' "
+  elems.shift
+  elems.each_with_index do |elem, index|
+    from += ", edge e#{(index+1).to_s}, node n#{(index+2).to_s} "
+    where += "AND e#{(index+1).to_s}.start = n#{(index+1).to_s}.id AND e#{(index+1).to_s}.end = n#{(index+2).to_s}.id AND n#{(index+2).to_s}.name = '#{elem}' "
   end
-  label[i-1] = tmp[1]
+  query += from + where + ';'
+  p query
 end
 
-sql = "SELECT n2.id
-FROM node n1, edge e1, node n2
-WHERE n1.id = 1 and n1.name = \"" + label[0] +
-"\" and e1.start = n1.id and e1.end = n2.id
-and n2.name = \"" + label[1] + "\";"
-
+query = parse_xpath(xpath)
 # データベースに接続
 db = SQLite3::Database.new("./jbisc.db")
 
 # SQL 文を実行
 db.transaction{
-  db.execute(sql) {|row|
+  db.execute(query) {|row|
   printf("%s\n", row[0])
 }
 }
