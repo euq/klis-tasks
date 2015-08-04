@@ -7,7 +7,7 @@ def parse_xpath(xpath)
   elems.shift
   query = "SELECT n#{(elems.size).to_s}.id "
   from  = "FROM node n1 "
-  where = "WHERE n1.id = 1 AND n1.name = 'books' "
+  where = "WHERE n1.id = 1 AND n1.name = 'records' "
   elems.shift
   elems.each_with_index do |elem, index|
     from += ", edge e#{(index+1).to_s}, node n#{(index+2).to_s} "
@@ -45,7 +45,8 @@ end
 xpath_list = [
   "/child::books/child::book/child::title",
   "/child::books/child::book",
-  "/books/book"
+  "/books/book",
+  "/records/bibrecord/pub"
 ]
 
 db = SQLite3::Database.new("./jbisc.db")
