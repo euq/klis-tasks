@@ -19,7 +19,8 @@ def parse_xpath(xpath)
   # xpathが複数階層であった場合、2階層目以降を処理してクエリを拡張する
   elems.each_with_index do |elem, index|
     from += ", edge e#{(index+1).to_s}, node n#{(index+2).to_s} "
-    where += "AND e#{(index+1).to_s}.start = n#{(index+1).to_s}.id AND e#{(index+1).to_s}.end = n#{(index+2).to_s}.id AND n#{(index+2).to_s}.name = '#{elem}' "
+    where += "AND e#{(index+1).to_s}.start = n#{(index+1).to_s}.id 
+    AND e#{(index+1).to_s}.end = n#{(index+2).to_s}.id AND n#{(index+2).to_s}.name = '#{elem}' "
   end if elems.size > 0
 
   # sqlクエリの形に加工する
