@@ -44,18 +44,15 @@ def printnode(id, db)
 end
 
 xpath_list = [
-  "/child::books/child::book/child::title",
-  "/child::books/child::book",
-  "/books/book",
-  #"/records/bibrecord/pub",
-  "//bibrecord",
-  "//pub"
+  "/records/bibrecord"
 ]
 
-db = SQLite3::Database.new("./jbisc.db")
+db = SQLite3::Database.new("./test.db")
 
 xpath_list.each do |xpath|
   query = parse_xpath(xpath)
+  p query
+  exit
   # データベースに接続
 
   # SQL 文を実行
@@ -63,8 +60,9 @@ xpath_list.each do |xpath|
     db.execute(query) {|row|
     # printf("%s\n", row[0])
     printnode(row[0], db)
+    exit
   }
   }
 end
 
-db.close 
+db.close
