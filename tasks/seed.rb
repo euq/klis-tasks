@@ -3,7 +3,7 @@
 require 'sqlite3'
 
 system "rm jbisc.db"
-db = SQLite3::Database.new('./jbisc.db')
+db = SQLite3::Database.new('./test.db')
 
 db.execute("CREATE TABLE node(id integer, name text, type text);")
 db.execute("CREATE TABLE edge(start integer, end integer);")
