@@ -1,4 +1,6 @@
 # -*- encoding: utf-8 -*-
+# @author = himkt
+# @create = 2015/08/03
 # ex6
 
 require "rexml/document"
