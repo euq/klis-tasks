@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+# @author = himkt
+# @create = 2015/08/03
+
 
 require 'sqlite3'
 
