@@ -13,5 +13,5 @@
   - submitted on (2015/08/07)
   - optional: have not done
 
-* 参考(MLA)
+* Reference (MLA)
   - Fan, Wenfei, et al. "Query translation from XPath to SQL in the presence of recursive DTDs." Proceedings of the 31st international conference on Very large data bases. VLDB Endowment, 2005.
