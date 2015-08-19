@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+/* -----------------------------------------------------------
+CSS Information
+
+ File name:      tag.css
+ Author:         hira (admin)
+ Style Info:     タグクラウドのスタイル色々
+----------------------------------------------------------- */
+
+/*
+	01 CSS HappyLifeで使ってるスタイル
+----------------------------------------------------------- */
+.tagSearch01 {
+	overflow: hidden;
+	margin: 10px auto 30px;
+	padding: 20px 10px 10px 30px;
+	text-align: center;
+	line-height: 1;
+	background: url(../img/tag/bg_01.gif) repeat-y center center;
+}
+.tagSearch01 li {
+	display: inline;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	letter-spacing: -1px;
+	font-family: "Times New Roman",Serif;
+}
+.tagSearch01 li a {
+	position: relative;
+	top: 0px;
+	left: -10px;
+	z-index: 10;
+	margin: 0;
+	padding: 0 5px;
+	border: 1px dotted #999;
+	color: #000;
+	font-size: 1em;
+	text-decoration: none;
+}
+#contents .tagSearch01 li a:hover {
+	border: 1px solid #F99;
+	text-decoration: none;
+	background: white;
+	position: relative;
+	z-index: 50;
+	color: #000;
+}
+.tagSearch01 li.tagRank1 {
+	line-height: 1.3em;
+}
+.tagSearch01 li.tagRank1 a {
+	top: -5px;
+	z-index: 1;
+	font-size: 2.8em;
+  color: #ffa500;
+}
+.tagSearch01 li.tagRank2 a {
+	top: -4px;
+	z-index: 2;
+	font-size: 2.6em;
+	color: #00ced1;
+}
+.tagSearch01 li.tagRank3 a {
+	top: 4px;
+	z-index: 3;
+	font-size: 2.4em;
+	color: #008080;
+}
+.tagSearch01 li.tagRank4 a {
+	top: -6px;
+	z-index: 4;
+	font-size: 2.2em;
+	color: #e9967a;
+}
+.tagSearch01 li.tagRank5 a {
+	top: 8px;
+	z-index: 5;
+	font-size: 2em;
+	color: #00bfff;
+}
+.tagSearch01 li.tagRank6 a {
+	top: -5px;
+	z-index: 6;
+	font-size: 1.8em;
+	color: #ff6347;
+}
+.tagSearch01 li.tagRank7 a {
+	top: 6px;
+	z-index: 7;
+	font-size: 1.6em;
+	color: #ee82ee;
+}
+.tagSearch01 li.tagRank8 a {
+	top: -4px;
+	z-index: 8;
+	font-size: 1.4em;
+	color: #888;
+}
+.tagSearch01 li.tagRank9 a {
+	top: 8px;
+	z-index: 9;
+	font-size: 1.2em;
+	color: #b0c4de;
+}
+.tagSearch01 li.tagRank10 a {
+	top: 0;
+	z-index: 10;
+	font-size: 1em;
+	color: #AAA;
+}
+/*
+	タグをより散らす為の指定
+*/
+.tagSearch01 li.tagRank3 + li a,
+.tagSearch01 li.tagRank2 + li a,
+.tagSearch01 li.tagRank1 + li a {
+	left: -25px;
+	top: -5px;
+}
+.tagSearch01 li.tagRank7 + li.tagRank7 a {
+	top: -3px;
+}
+.tagSearch01 li.tagRank10 + li a {
+	top: 3px;
+}
+.tagSearch01 li.tagRank10 + li + li a {
+	top: -3px;
+}
+.tagSearch01 li.tagRank10 + li + li + li a {
+	top: 5px;
+}
+
+.tagSearch01 li + li + li + li + li a {
+	top: -2px;
+}
+
