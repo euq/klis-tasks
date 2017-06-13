@@ -1,3 +1,7 @@
 .*
 !.gitignore
 *.class
+
+data
+work
+result
